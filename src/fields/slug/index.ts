@@ -6,9 +6,9 @@ type Overrides = {
   slugOverrides?: Partial<TextField>
 }
 
-type Slug = (fieldToUse?: string, overrides?: Overrides) => TextField
+type Slug = (fieldToUse?: string, overrides?: Overrides) => [TextField]
 
-export const slugField: Slug = (fieldToUse = 'title', overrides = {}): TextField => {
+export const slugField: Slug = (fieldToUse = 'title', overrides = {}): [TextField] => {
   const { slugOverrides } = overrides
 
   // @ts-expect-error - ts mis-match Partial<TextField> with TextField
@@ -27,5 +27,5 @@ export const slugField: Slug = (fieldToUse = 'title', overrides = {}): TextField
     },
   }
 
-  return slugField
+  return [slugField]
 }
